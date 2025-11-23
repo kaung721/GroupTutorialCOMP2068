@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
 import SavedPage from './pages/SavedPage';
+import LoginPage from './components/Login';
+import RegisterPage from './components/Register';
 import { auth } from './api';
 import Home from './pages/Home';
 
@@ -23,6 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home user={user} />} />
         <Route path="/saved" element={<SavedPage user={user} />} />
+        <Route path="/login" element={<LoginPage setUser={setUser} />} />
+        <Route path="/register" element={<RegisterPage setUser={setUser} />} />
       </Routes>
     </div>
   );
