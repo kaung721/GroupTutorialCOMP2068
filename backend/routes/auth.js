@@ -33,7 +33,7 @@ router.post('/login', (req, res, next) => {
     if (err) return next(err);
     if (!user) return res.status(401).json({ error: info?.message || 'Login failed' });
 
-    req.logIn(user, (err) => {
+    req.login(user, (err) => {
       if (err) return next(err);
       return res.json({ user: { id: user._id, email: user.email } });
     });
