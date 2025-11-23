@@ -15,7 +15,7 @@ export const auth = {
 
 export const news = {
     categories: () => client.get('/api/news').then(r => r.data),
-    getCategory: (cat, q, limit) => client.get(`/api/news/${encodedURIComponent(cat)}`, { params: {q, limit} }).then(r => r.data) 
+    getCategory: (cat, q, limit) => client.get(`/api/news/${encodeURIComponent(cat)}`, { params: {q, limit} }).then(r => r.data) 
 };
 
 export const saved = {

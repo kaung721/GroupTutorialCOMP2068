@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
-import Home from './components/Home';
 import SavedPage from './pages/SavedPage';
 import { auth } from './api';
+import Home from './pages/Home';
 
 function App() {
   const [user, setUser] = useState(null);

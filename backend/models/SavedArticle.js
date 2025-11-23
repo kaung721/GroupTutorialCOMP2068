@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SavedArticleSchema = new Schema({
-    user: { type: Scheme.Types.ObjectId, ref: "User", required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
     title: String, 
     description: String, 
     url: { type: String, required: true },
