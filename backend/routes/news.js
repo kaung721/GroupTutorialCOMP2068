@@ -11,10 +11,13 @@ const categoryMap = {
     category: "technology",
   },
   business: {
-    url: "https://edition.cnn.com/business/rss.xml",
+    url: "https://feeds.bbci.co.uk/news/business/rss.xml",
     category: "business",
   },
-  general: { url: "https://rss.cnn.com/rss/edition.rss", category: "general" },
+  general: {
+    url: "https://abcnews.go.com/abcnews/topstories",
+    category: "general",
+  },
 };
 router.get("/", (req, res) =>
   res.json({ categories: Object.keys(categoryMap) })
