@@ -13,6 +13,8 @@ const configurePassport = require("./config/passport");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+app.set("trust proxy", 1);
+
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -51,6 +53,13 @@ app.use("/auth", authRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/saved", savedRoutes);
 app.get("/", (req, res) => res.json({ ok: true }));
+app.get("/debug", (req, res) => {
+  res.json({
+    isAuthenticated: req.isAuthenticated && req.isAuthenticated(),
+    user: req.user || null,
+    sessionID: req.sessionID,
+  });
+});
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "..", "frontend", "build")));
   app.use((req, res, next) => {
