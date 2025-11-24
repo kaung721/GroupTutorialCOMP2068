@@ -36,7 +36,11 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
-    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 },
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      sameSite: "none",
+      secure: true,
+    },
   })
 );
 app.use(passport.initialize());
