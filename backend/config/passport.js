@@ -24,14 +24,18 @@ module.exports = function(passport) {
   );
 
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    console.log('[SERIALIZE] Serializing user:', user._id);
+    done(null, user._id);
   });
 
   passport.deserializeUser(async (id, done) => {
     try {
+      console.log('[DESERIALIZE] Deserializing user ID:', id);
       const user = await User.findById(id).select("-password");
+      console.log('[DESERIALIZE] Found user:', user ? user.email : 'NOT FOUND');
       done(null, user);
     } catch (err) {
+      console.error('[DESERIALIZE] Error:', err.message);
       done(err);
     }
   });
