@@ -16,7 +16,7 @@ function Login({ onLogin }) {
             onLogin(res.user);
             nav('/');
         } catch (err) {
-            setError( (err.error) || 'Invalid email or password');
+            setError(err.response?.data?.error || 'Invalid email or password');
         }
     };
 

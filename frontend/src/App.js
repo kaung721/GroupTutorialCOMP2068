@@ -25,8 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home user={user} />} />
         <Route path="/saved" element={<SavedPage user={user} />} />
-        <Route path="/login" element={<LoginPage setUser={setUser} />} />
-        <Route path="/register" element={<RegisterPage setUser={setUser} />} />
+        <Route path="/login" element={<LoginPage onLogin={setUser} />} />
+        <Route path="/register" element={<RegisterPage onRegister={setUser} />} />
       </Routes>
     </div>
   );
