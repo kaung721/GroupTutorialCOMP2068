@@ -18,7 +18,7 @@ router.post('/register', async (req, res, next) => {
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({ email, password: hash });
 
-    req.logIn(user, (err) => {
+    req.login(user, (err) => {
       if (err) return next(err);
       return res.json({ user: { id: user._id, email: user.email } });
     });
@@ -29,18 +29,12 @@ router.post('/register', async (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-  console.log('[LOGIN] Attempting login for:', req.body.email);
   passport.authenticate('local', (err, user, info) => {
-    console.log('[LOGIN] Passport result - err:', err, 'user:', user ? user.email : null, 'info:', info);
     if (err) return next(err);
     if (!user) return res.status(401).json({ error: info?.message || 'Login failed' });
 
     req.logIn(user, (err) => {
-      if (err) {
-        console.error('[LOGIN] logIn error:', err);
-        return next(err);
-      }
-      console.log('[LOGIN] Session after logIn:', req.sessionID, 'User:', req.user ? req.user.email : null);
+      if (err) return next(err);
       return res.json({ user: { id: user._id, email: user.email } });
     });
   })(req, res, next);
@@ -54,7 +48,6 @@ router.post('/logout', (req, res, next) => {
 });
 
 router.get('/me', (req, res) => {
-  console.log('[ME] Session:', req.sessionID, 'User:', req.user ? req.user.email : null, 'IsAuth:', req.isAuthenticated ? req.isAuthenticated() : false);
   if (!req.user) return res.json({ user: null });
   res.json({ user: { id: req.user._id, email: req.user.email } });
 });

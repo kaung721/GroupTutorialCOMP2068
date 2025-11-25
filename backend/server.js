@@ -54,10 +54,8 @@ app.use("/api/news", newsRoutes);
 app.use("/api/saved", savedRoutes);
 app.get("/", (req, res) => res.json({ ok: true }));
 app.get("/debug", (req, res) => {
-  const isAuth = req.isAuthenticated && req.isAuthenticated();
-  console.log('[DEBUG] SessionID:', req.sessionID, 'isAuth:', isAuth, 'user:', req.user ? req.user.email : null);
   res.json({
-    isAuthenticated: isAuth,
+    isAuthenticated: req.isAuthenticated && req.isAuthenticated(),
     user: req.user || null,
     sessionID: req.sessionID,
   });
