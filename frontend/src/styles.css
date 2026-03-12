@@ -1,0 +1,119 @@
+/* Global layout */
+body {
+  background-color: #020617; /* deep slate / near-black */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
+
+/* Top navbar / masthead */
+.news-navbar {
+  background: #0b1726;
+  border-radius: 0;
+  border-bottom: 3px solid #e63946;
+  padding-block: 0.5rem;
+}
+
+.news-navbar .navbar-brand {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff !important;
+}
+
+.news-navbar .navbar-brand span.accent {
+  color: #e63946;
+}
+
+.news-navbar .nav-link {
+  color: #c0c6d0 !important;
+  font-weight: 500;
+}
+
+.news-navbar .nav-link.active,
+.news-navbar .nav-link:hover {
+  color: #ffffff !important;
+}
+
+.news-navbar .navbar-text {
+  color: #e5e7eb;
+}
+
+/* Category strip */
+.category-strip {
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 0.35rem 0.5rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.category-pill {
+  text-transform: capitalize;
+}
+
+/* Search */
+.search-card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+/* Article cards */
+.article-card {
+  border: none;
+  border-radius: 0.9rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: #0b1120; /* dark slate card on slightly darker page background */
+}
+
+.article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.article-meta {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+
+.article-description {
+  color: #e5e7eb;
+}
+
+/* Saved sidebar */
+.saved-sidebar {
+  background: #020617;
+  border-radius: 0.9rem;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+}
+
+.saved-sidebar h5 {
+  font-weight: 700;
+}
+
+.saved-item-title {
+  font-size: 0.95rem;
+}
+
+/* Footer */
+.app-footer {
+  padding: 1rem 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
